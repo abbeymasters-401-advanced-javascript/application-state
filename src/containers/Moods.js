@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Controls from '../components/controls/Controls';
 import Face from '../components/face/Face';
 import { connect } from 'react-redux';
@@ -66,6 +67,13 @@ const MoodsContainer = connect(
   mapDispatchToProps
 )(Moods);
 
+
+Moods.propTypes = {
+  count: PropTypes.shape(PropTypes.string.isRequired).isRequired,
+  face: PropTypes.string.isRequired,
+  actions: PropTypes.array.isRequired,
+  handleSelection: PropTypes.func.isRequired
+};
 
 export default MoodsContainer;
 
