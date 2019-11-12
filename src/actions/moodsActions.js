@@ -4,6 +4,7 @@ export const TAKE_NAP = 'TAKE_NAP';
 export const STUDY = 'STUDY';
 export const SET_TO_ZERO = 'SET_TO_ZERO';
 export const RESET_GAME = 'RESET_GAME';
+export const SAVE_GAME = 'SAVE_GAME';
 
 export const incrementState = (name) => ({
   type: name
@@ -12,3 +13,9 @@ export const incrementState = (name) => ({
 export const resetGame = () => ({
   type: RESET_GAME
 });
+
+export const saveGame = (game) => ({
+  type: SAVE_GAME,
+  payload: game
+});
+
