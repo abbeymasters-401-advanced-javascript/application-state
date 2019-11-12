@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Controls from '../components/controls/Controls';
 import Face from '../components/face/Face';
 import { connect } from 'react-redux';
+import Timer from '../components/timer/Timer';
 
 export const isTired = state => state.coffees < 1 && state.naps < 1;
 export const isHyper = state => state.coffees > 3;
@@ -17,7 +18,7 @@ export const getFace = state => {
   if(isHyper(state)) return '🙀';
   if(isEducated(state)) return '🤯';
   if(isHungry(state)) return '😡';
-  
+
   return '😀';
 };
 
@@ -29,16 +30,31 @@ const actions = [
 ];
 
 const Moods = ({ count, face, actions, handleSelection }) => {
+
+  const [render, setRender] = useState(false);
+
+  const handleClick = () => {
+    setRender(true);
+  };
+
   const controlActions = actions.map(action => ({
     ...action,
     count: count[action.stateName]
   }));
-    
-    
+
+
   return (
     <>
-      <Controls actions={controlActions} handleSelection={handleSelection} />
-      <Face emoji={face} />
+      <button onClick={handleClick}>Start</button>
+      {render ? (
+        <>
+          <Controls actions={controlActions} handleSelection={handleSelection} />
+          <Face emoji={face} />
+          <Timer setRender={setRender} />
+        </>
+      ) : (
+        console.log('Game has not started yet.')
+      )}
     </>
   );
 };

@@ -21,6 +21,8 @@ function reducer(state = initialState, action) {
       return { ...state, naps: state.naps + 1 };
     case 'STUDY':
       return { ...state, studies: state.studies + 1 };
+    case 'SET_TO_ZERO':
+      return { coffees: 0, snacks: 0, naps: 0, studies: 0, face: '', actions: [] };
   }
 }
 
