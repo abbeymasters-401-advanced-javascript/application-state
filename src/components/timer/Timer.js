@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import store from '../../store';
+import styles from './Timer.css';
 
 const Timer = ({ setRender }) => {
-  const [seconds, setSeconds]  = useState(5);
+  const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
     const interval = setTimeout(() => {
@@ -23,7 +24,9 @@ const Timer = ({ setRender }) => {
   });
 
   return (
-    <h2>{seconds}</h2>
+    <div className={styles.timer}>
+      <h2>{seconds}</h2>
+    </div>
   );
 };
 

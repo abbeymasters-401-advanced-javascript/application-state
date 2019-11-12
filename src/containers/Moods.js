@@ -5,6 +5,7 @@ import Controls from '../components/controls/Controls';
 import Face from '../components/face/Face';
 import { connect } from 'react-redux';
 import Timer from '../components/timer/Timer';
+import styles from './Moods.css';
 
 export const isTired = state => state.coffees < 1 && state.naps < 1;
 export const isHyper = state => state.coffees > 3;
@@ -12,11 +13,11 @@ export const isEducated = state => state.studies > 2;
 export const isHungry = state => state.snacks < 1;
 
 export const getFace = state => {
-  if(isTired(state) && isHungry(state)) return '🤬';
-  if(isHyper(state) && isHungry(state)) return '🤮';
+  if(isTired(state) && isHungry(state)) return '😵';
+  if(isHyper(state) && isHungry(state)) return '🤣';
   if(isTired(state)) return '😴';
   if(isHyper(state)) return '🙀';
-  if(isEducated(state)) return '🤯';
+  if(isEducated(state)) return '😯';
   if(isHungry(state)) return '😡';
 
   return '😀';
@@ -43,8 +44,9 @@ const Moods = ({ count, face, actions, handleSelection }) => {
 
 
   return (
-    <>
+    <div className={styles.Moods}>
       <button onClick={handleClick}>Start</button>
+
       {render ? (
         <>
           <Controls actions={controlActions} handleSelection={handleSelection} />
@@ -54,7 +56,7 @@ const Moods = ({ count, face, actions, handleSelection }) => {
       ) : (
         console.log('Game has not started yet.')
       )}
-    </>
+    </div>
   );
 };
 
