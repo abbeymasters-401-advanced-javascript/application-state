@@ -21,7 +21,7 @@ const Timer = ({ setRender }) => {
       }
     }, 1000);
     return () => clearTimeout(interval);
-  });
+  }, [seconds]);
 
   return (
     <div className={styles.timer}>
