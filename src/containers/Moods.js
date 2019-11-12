@@ -30,7 +30,6 @@ const actions = [
 ];
 
 const Moods = ({ count, face, actions, handleSelection }) => {
-
   const [render, setRender] = useState(false);
 
   const handleClick = () => {
