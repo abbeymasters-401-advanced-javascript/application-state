@@ -4,7 +4,7 @@ import store from '../../store';
 import styles from './Timer.css';
 
 const Timer = ({ setRender }) => {
-  const [seconds, setSeconds] = useState(5);
+  const [seconds, setSeconds] = useState(30);
 
   useEffect(() => {
     const interval = setTimeout(() => {
