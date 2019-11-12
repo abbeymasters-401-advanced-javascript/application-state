@@ -1,4 +1,4 @@
-import { DRINK_COFFEE, EAT_SNACK, TAKE_NAP, STUDY, SET_TO_ZERO } from '../actions/moodsActions';
+import { DRINK_COFFEE, EAT_SNACK, TAKE_NAP, STUDY, SET_TO_ZERO, RESET_GAME } from '../actions/moodsActions';
 
 const initialState = {
   coffees: 0,
@@ -22,6 +22,8 @@ function reducer(state = initialState, action) {
     case STUDY:
       return { ...state, studies: state.studies + 1 };
     case SET_TO_ZERO:
+      return { coffees: 0, snacks: 0, naps: 0, studies: 0, face: '', actions: [] };
+    case RESET_GAME:
       return { coffees: 0, snacks: 0, naps: 0, studies: 0, face: '', actions: [] };
   }
 }

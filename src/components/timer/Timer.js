@@ -8,10 +8,10 @@ const Timer = ({ setRender }) => {
 
   useEffect(() => {
     const interval = setTimeout(() => {
-      if(seconds > 0) {
+      if (seconds > 0) {
         setSeconds(seconds => seconds - 1);
       }
-      if(seconds === 0) {
+      if (seconds === 0) {
         clearTimeout(interval);
         setRender(false);
         store.dispatch({
@@ -24,9 +24,11 @@ const Timer = ({ setRender }) => {
   }, [seconds]);
 
   return (
-    <div className={styles.timer}>
-      <h2>{seconds}</h2>
-    </div>
+    <>
+      <div className={styles.timer}>
+        <h2>{seconds}</h2>
+      </div>
+    </>
   );
 };
 

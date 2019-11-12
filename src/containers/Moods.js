@@ -6,7 +6,7 @@ import Controls from '../components/controls/Controls';
 import Face from '../components/face/Face';
 import Timer from '../components/timer/Timer';
 import styles from './Moods.css';
-import { DRINK_COFFEE, EAT_SNACK, TAKE_NAP, STUDY } from '../actions/moodsActions';
+import { DRINK_COFFEE, EAT_SNACK, TAKE_NAP, STUDY, RESET_GAME } from '../actions/moodsActions';
 import { getCoffees, getSnacks, getNaps, getStudies, getFace } from '../selectors/moodsSelectors';
 
 
@@ -17,7 +17,7 @@ const actions = [
   { name: STUDY, text: 'Study', stateName: 'studies' },
 ];
 
-const Moods = ({ count, face, actions, handleSelection }) => {
+const Moods = ({ count, face, actions, handleSelection, handleReset }) => {
   const [render, setRender] = useState(false);
 
   const handleClick = () => {
@@ -36,6 +36,7 @@ const Moods = ({ count, face, actions, handleSelection }) => {
 
       {render ? (
         <>
+          <button onClick={handleReset}>Reset Game</button>
           <Controls actions={controlActions} handleSelection={handleSelection} />
           <Face emoji={face} />
           <Timer setRender={setRender} />
@@ -63,6 +64,11 @@ const mapDispatchToProps = dispatch => ({
     dispatch({
       type: name
     });
+  },
+  handleReset() {
+    dispatch({
+      type: RESET_GAME
+    });
   }
 });
 
@@ -76,7 +82,8 @@ Moods.propTypes = {
   count: PropTypes.shape(PropTypes.string.isRequired).isRequired,
   face: PropTypes.string.isRequired,
   actions: PropTypes.array.isRequired,
-  handleSelection: PropTypes.func.isRequired
+  handleSelection: PropTypes.func.isRequired,
+  handleReset: PropTypes.func.isRequired
 };
 
 export default MoodsContainer;
