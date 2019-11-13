@@ -11,6 +11,7 @@
   }
 
   li {
+    width: 250px;
     border-top: 1px solid black;
     list-style: none;
     font-family: arial;

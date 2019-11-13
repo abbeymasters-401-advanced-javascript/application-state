@@ -1,12 +1,9 @@
 import React from 'react';
 import HistoryItem from './HistoryItem';
-import store from '../../store';
 import styles from './History.css';
 import PropTypes from 'prop-types';
 
 const History = ({ history }) => {
-  console.log(history);
-  // let currentValue = store.getState();
 
   const historyItems = history.map(item => {
     return (

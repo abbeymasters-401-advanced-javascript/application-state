@@ -32,17 +32,23 @@ const Moods = ({ count, face, actions, handleSelection, handleReset, handleSaveG
 
   return (
     <div className={styles.Moods}>
-      <button onClick={handleClick}>Start</button>
+      <button className={styles.saveButton} onClick={handleClick}>Start</button>
 
       {render ? (
-        <>
-          <button onClick={handleReset}>Reset Game</button>
-          <button onClick={ () => handleSaveGame({ count, face })}>Save Game</button>
-          <Controls actions={controlActions} handleSelection={handleSelection} />
-          <Face emoji={face} />
-          <Timer setRender={setRender} />
-          <History history={history} />
-        </>
+        <section className={styles.all}>
+          <div>
+            <History history={history} />
+          </div>
+          <section>
+            <div className={styles.resetSaveButtons}>
+              <button onClick={handleReset}>Reset Game</button>
+              <button onClick={() => handleSaveGame({ count, face })}>Save Game</button>
+            </div>
+            <Controls actions={controlActions} handleSelection={handleSelection} />
+            <Timer setRender={setRender} />
+            <Face emoji={face} />
+          </section>
+        </section>
       ) : (
         console.log('Timer is stopped.')
       )}
@@ -58,7 +64,7 @@ const mapStateToProps = state => ({
     studies: getStudies(state),
   },
   face: getFace(state),
-  actions, 
+  actions,
   history: state.game
 });
 
@@ -90,7 +96,8 @@ Moods.propTypes = {
   actions: PropTypes.array.isRequired,
   handleSelection: PropTypes.func.isRequired,
   handleReset: PropTypes.func.isRequired,
-  handleSaveGame: PropTypes.func.isRequired
+  handleSaveGame: PropTypes.func.isRequired,
+  history: PropTypes.array.isRequired
 };
 
 export default MoodsContainer;

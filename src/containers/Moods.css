@@ -1,3 +1,16 @@
+.saveButton {
+  width: 150px;
+  height: 25px;
+  border: 1px solid black;
+  background: none;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  font-family: arial;
+  color: black;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
 .Moods {
   width: 100vw;
   display: flex;
@@ -16,3 +29,27 @@
   }
 }
 
+
+.resetSaveButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f68e56;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-bottom: 50px;
+  width: 70vw;
+  
+    button {
+      margin-left: 6.4px;
+      margin-bottom: 0;
+      border-color: white;
+      color: white;
+    }
+}
+
+.all {
+  display: flex;
+  flex-direction: row;
+}
