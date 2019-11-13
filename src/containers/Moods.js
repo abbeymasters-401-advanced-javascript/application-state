@@ -8,7 +8,7 @@ import Timer from '../components/timer/Timer';
 import styles from './Moods.css';
 import { DRINK_COFFEE, EAT_SNACK, TAKE_NAP, STUDY, RESET_GAME, saveGame } from '../actions/moodsActions';
 import { getCoffees, getSnacks, getNaps, getStudies, getFace } from '../selectors/moodsSelectors';
-
+import History from '../components/History/History';
 
 const actions = [
   { name: DRINK_COFFEE, text: 'Drink Coffee', stateName: 'coffees' },
@@ -17,7 +17,7 @@ const actions = [
   { name: STUDY, text: 'Study', stateName: 'studies' },
 ];
 
-const Moods = ({ count, face, actions, handleSelection, handleReset, handleSaveGame }) => {
+const Moods = ({ count, face, actions, handleSelection, handleReset, handleSaveGame, history }) => {
   const [render, setRender] = useState(false);
 
   const handleClick = () => {
@@ -41,6 +41,7 @@ const Moods = ({ count, face, actions, handleSelection, handleReset, handleSaveG
           <Controls actions={controlActions} handleSelection={handleSelection} />
           <Face emoji={face} />
           <Timer setRender={setRender} />
+          <History history={history} />
         </>
       ) : (
         console.log('Timer is stopped.')
@@ -57,7 +58,8 @@ const mapStateToProps = state => ({
     studies: getStudies(state),
   },
   face: getFace(state),
-  actions
+  actions, 
+  history: state.game
 });
 
 const mapDispatchToProps = dispatch => ({

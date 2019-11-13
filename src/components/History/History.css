@@ -1,0 +1,19 @@
+.History {
+  width: 30vw;
+  margin-left: 5%;
+  
+  h2 {
+   font-family: 'Exo 2', sans-serif;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  li {
+    border-top: 1px solid black;
+    list-style: none;
+    font-family: arial;
+    font-size: 12px;
+  }
+}
